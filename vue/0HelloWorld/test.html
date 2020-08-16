@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!--
+        模板页面：html+js,
+        js以什么形式存在？
+        指令：vue自定义标签属性（以v-开头），属性值是一个js表达式 
+        插值：双大括号表达式，动态显示数据
+    -->
+    <div class="demo">
+        <input type="text" v-model="msg">
+        <p>Hello {{msg}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: ".demo",
+            data: {
+                msg: "lts"
+            }
+        })
+    </script>
+</body>
+</html>

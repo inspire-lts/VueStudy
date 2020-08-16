@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <h2>0. 双括号表达式 | 插值</h2>
+        <p>{{msg}}</p>
+        <h2>1. 指令一：动态绑定一个或多个属性或一个组件</h2>
+        <p v-bind:title="title">v-bind指令</p>
+        <!-- v-bind简写为： -->
+        <h2>2. 指令二：绑定事件监听</h2>
+        <button v-on:click="test">test1</button>
+        <!-- v-bind简写为@ -->
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#demo",
+            data: {
+                msg: "Vue",
+                title: "lts"
+            },
+            methods: {
+                test(){
+                    alert("点点点")
+                }
+            },
+        })
+    </script>
+</body>
+</html>
