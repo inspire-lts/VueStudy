@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="condation">
+        <ul>
+            <li v-for="(item, index) in filterArr" :key="item.id">
+                {{item.id}}--{{item.name}}--{{item.age}}
+            </li>
+        </ul>
+            <button @click="sortType=2">按年龄升序</button>
+            <button @click="sortType=3">按年龄降序</button>
+            <button @click="sortType=1">原本顺序</button>
+        
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                peoples: [
+                    {id: 1, name: "lts", age: 23},
+                    {id: 2, name: "jpy", age:24 },
+                    {id: 3, name: "hhh", age: 25},
+                    {id: 4, name: "233", age: 18}
+                ],
+                condation: "",
+                sortType: 1, //1代表不排序， 2升序， 3降序
+            },
+            computed: {
+                filterArr(){
+                    //按照输入框过滤
+                     const result =  this.peoples.filter((item) => item.name.indexOf(this.condation) !== -1)
+                     //按照点击过滤
+                     if(this.sortType !==1){
+                         if(this.sortType==3) return result.sort((a, b) => b.age - a.age )
+                         return result.sort((a, b) => a.age - b.age)
+                     }
+                     return result
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(p, index) in peoples" :key="p.id">
+                {{p.id}}--{{p.name}}--{{p.age}}
+                <button @click="deleteP(index)">删除</button>
+                <button @click="updataP(index, {id: Date.now(), name: 'lts', age: 23})">更新</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                peoples: [
+                    {id: 1, name: "lts", age: 23},
+                    {id: 2, name: "jpy", age:23},
+                    {id: 3, name: "hhh", age: 25}
+                ]
+            },
+            methods: {
+                deleteP(index){
+                    this.peoples.splice(index, 1)
+                },
+                updataP(index, newP){
+                    this.peoples.splice(index, 1, newP)
+                }
+            },
+        })
+    </script>
+</body>

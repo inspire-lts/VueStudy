@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <!--v-show通过display:none来不显示
+        v-else通过删除来不显示-->
+    <div id="demo">
+    <h1 v-if="awesome">Vue is awesome!</h1>
+    <h1 v-else>Oh, no</h1>
+    <h2 v-show="awesome">lts</h2>
+    <h2 v-show="!awesome">233</h2>
+    <button @click="awesome = !awesome">更新</button>
+    </div>
+    
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                awesome: true,
+                show: true
+            }
+        })
+    </script>
+</body>
+</html>

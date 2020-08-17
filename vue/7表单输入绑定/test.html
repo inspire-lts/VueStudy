@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <form action="#">
+            <span>用户名：</span>
+            <input type="text" v-model="name"><br>
+
+            <span>密码：</span>
+            <input type="text" v-model="pwd"><br>
+
+            <span>性别：</span>
+            <input type="radio" id="female" v-model="sex" value="female">
+            <label for="female">女</label>
+            <input type="radio" id="male" v-model="sex" value="male">
+            <label for="male">男</label><br>
+
+            <span>爱好：</span>
+            <input type="checkbox" id="baskball" v-model="hobby" value="baskball">
+            <label for="baskball">篮球</label>
+            <input type="checkbox" id="football" v-model="hobby" value="football">
+            <label for="football">足球</label><br>
+
+            <span>城市:</span>
+            <select v-model="city">
+                <option value="">未选择</option>
+                <option :value="item.id" v-for="(item, index) in allCity" :key="item.id">{{item.name}}</option>
+            </select><br>
+            <input type="submit" value="注册">
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                name: " ",
+                pwd: " ",
+                sex: " ",
+                hobby: [],
+                allCity:[
+                    {id: 1, name: "chengdu"},
+                    {id: 2, name: "beijing"},
+                    {id: 3, name: "shenzheng"}
+                ],
+                city: " "
+            },
+        })
+    </script>
+</body>
+</html>

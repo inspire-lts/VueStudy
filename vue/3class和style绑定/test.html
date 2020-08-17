@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <style>
+        .classA {
+            background-color: red;
+        }
+        .classB{
+            background-color: blue;
+        }
+    </style>
+    <div class="demo">
+        <h2>class绑定</h2>
+        <p :class="className">绑定字符串 </p> <!--类名不确定-->
+        <p :class="{classA: hasA, classB: hasB}">绑定对象</p> <!--类名确定，但不确定有无-->
+        <p :class="['classA', 'classB']">绑定数组</p>
+        <button @click="update">更新</button>
+
+        <p :style="{color:activateColor, fontSize: fontSize}">绑定style</p>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: ".demo",
+            data: {
+                className: "classA",
+                hasA: false,
+                hasB: true,
+                activateColor: "red",
+                fontSize: "20px"
+            },
+            methods: {
+                update(){
+                    this.className = "classB",
+                    this.hasA = !this.hasA,
+                    this.hasB = !this.hasB,
+                    this.activateColor = "green",
+                    this.fontSize = "10px"
+                }
+            },
+        })
+    </script>
+</body>
+</html>

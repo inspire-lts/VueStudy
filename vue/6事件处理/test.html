@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>1. 绑定监听</h2>
+        <button @click="test1('lts', $event)"> test111</button>
+        <h2>2. 事件修饰符</h2>
+        <!--
+            事件处理的2个重要操作
+            阻止事件默认行为
+            阻止事件冒泡
+        -->
+        <a href="https://www.baidu.com" @click.prevent="test2" >终止跳转</a>
+        <div style="height: 200px; width: 200px; background-color: red;" @click="test3">
+            <div style="height: 100px; width: 100px; background-color: green;" @click.stop="test4">
+                阻止事件冒泡
+            </div>
+        </div>
+        <h3>3. 按键修饰符</h3>
+        <input v-model="msg" @keyup.enter="test5">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: " "
+            },
+            methods: {
+                test1(str, event){
+                    alert(str + "-" + event.target.innerText)
+                },
+                test2(){
+                    alert("阻止默认行为")
+                },
+                test3(){
+                    alert("out")
+                },
+                test4(){
+                    alert("inner")
+                },
+                test5(){
+                    alert(this.msg)
+                }
+            },
+        })
+    </script>
+</body>
+</html>
